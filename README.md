@@ -1,0 +1,1 @@
+To view the each assignment, you can go through each folder with assignment name. There each assignment have individual README.md file. In each README.md file there are certain steps and demo for each assignment.
