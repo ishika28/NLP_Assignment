@@ -1,3 +1,6 @@
 # Ignore model files inside the A1 directory
 
 A1/model/
+# Ignore model files inside the A2 directory
+
+A2/model/
