@@ -63,7 +63,6 @@ def generate(prompt, max_seq_len, temperature, model, tokenizer, vocab, device):
             indices.append(next_token)
     return ' '.join([vocab.get_itos()[i] for i in indices])
 
-
 # Dash App
 app = dash.Dash(__name__)
 app.layout = html.Div([
@@ -81,8 +80,14 @@ app.layout = html.Div([
 def update_output(n_clicks, prompt):
     if not prompt:
         return "Please enter a prompt to generate text."
-    continuation = generate(prompt, max_seq_len=30, temperature=0.8, model=model, tokenizer=tokenizer, vocab=vocab, device=device)
-    return f"{continuation}"
+    temperatures = [0.5, 0.7, 0.75, 0.8, 1.0]
+    outputs = []
+    for temp in temperatures:
+        continuation = generate(prompt, max_seq_len=30, temperature=temp, model=model, tokenizer=tokenizer, vocab=vocab, device=device)
+        outputs.append(continuation)
+    return html.Div([
+        html.Div(output, style={"marginBottom": "10px"}) for output in outputs
+    ])
 
 if __name__ == "__main__":
     app.run_server(debug=True)
