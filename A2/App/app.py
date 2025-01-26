@@ -66,10 +66,12 @@ def generate(prompt, max_seq_len, temperature, model, tokenizer, vocab, device):
 # Dash App
 app = dash.Dash(__name__)
 app.layout = html.Div([
-    html.H1("Text Continuation Generator"),
-    dcc.Input(id="input-prompt", type="text", placeholder="Enter a text prompt", style={"width": "70%"}),
-    html.Button("Generate", id="generate-button", n_clicks=0),
-    html.Div(id="output-text", style={"marginTop": "20px", "fontSize": "18px"})
+    html.Div([
+        html.H1("Language Model", style={"textAlign": "center"}),
+        dcc.Input(id="input-prompt", type="text", placeholder="Enter a text prompt", style={"width": "40%", "margin": "10px auto", "display": "block"}),
+        html.Button("Generate", id="generate-button", n_clicks=0, style={"backgroundColor": "blue", "color": "white", "border": "none", "padding": "10px 20px", "margin": "10px auto", "display": "block", "cursor": "pointer"}),
+        html.Div(id="output-text", style={"marginTop": "20px", "fontSize": "18px", "textAlign": "center"})
+    ], style={"display": "flex", "flexDirection": "column", "alignItems": "center", "justifyContent": "center", "height": "100vh"})
 ])
 
 @app.callback(
