@@ -4,3 +4,7 @@ A1/model/
 # Ignore model files inside the A2 directory
 
 A2/model/
+
+# Ignore model files inside the A3 directory
+
+A3/model/
