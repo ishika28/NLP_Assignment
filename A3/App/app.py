@@ -41,11 +41,11 @@ enc_pf_dim = 512
 dec_pf_dim = 512
 enc_dropout = 0.1
 dec_dropout = 0.1
-attn_variant = 'additive'
+attention_var = 'additive'
 
 #  Create a fresh model instance
-encoder = Encoder(input_dim, hid_dim, enc_layers, enc_heads, enc_pf_dim, enc_dropout, attn_variant, device)
-decoder = Decoder(output_dim, hid_dim, dec_layers, dec_heads, dec_pf_dim, dec_dropout, attn_variant, device)
+encoder = Encoder(input_dim, hid_dim, enc_layers, enc_heads, enc_pf_dim, enc_dropout, attention_var, device)
+decoder = Decoder(output_dim, hid_dim, dec_layers, dec_heads, dec_pf_dim, dec_dropout, attention_var, device)
 # model = Seq2SeqTransformer(encoder, decoder, PAD_IDX, PAD_IDX, device).to(device)
 
 model_path = 'model/additive_Seq2SeqTransformer.pt'
@@ -84,7 +84,7 @@ def translate_sentence(sentence, src_language, trg_language, model, device, max_
    
     return ' '.join(trg_tokens)
 
-# ✅ Initialize Dash app
+# Initialize Dash app
 app = dash.Dash(__name__)
 
 

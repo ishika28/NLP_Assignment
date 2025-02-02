@@ -17,13 +17,13 @@ class AdditiveAttention(nn.Module):
         return scores
 
 class MultiHeadAttentionLayer(nn.Module):
-    def __init__(self, hid_dim, n_heads, dropout, attn_variant, device):
+    def __init__(self, hid_dim, n_heads, dropout, attention_var, device):
         super().__init__()
         assert hid_dim % n_heads == 0
         self.hid_dim = hid_dim
         self.n_heads = n_heads
         self.head_dim = hid_dim // n_heads
-        self.attn_variant = attn_variant
+        self.attention_var = attention_var
         self.fc_q = nn.Linear(hid_dim, hid_dim)
         self.fc_k = nn.Linear(hid_dim, hid_dim)
         self.fc_v = nn.Linear(hid_dim, hid_dim)
@@ -40,11 +40,11 @@ class MultiHeadAttentionLayer(nn.Module):
         Q = Q.view(batch_size, -1, self.n_heads, self.head_dim).permute(0, 2, 1, 3)
         K = K.view(batch_size, -1, self.n_heads, self.head_dim).permute(0, 2, 1, 3)
         V = V.view(batch_size, -1, self.n_heads, self.head_dim).permute(0, 2, 1, 3)
-        if self.attn_variant == "multiplicative":
+        if self.attention_var == "multiplicative":
             energy = torch.matmul(Q, K.permute(0, 1, 3, 2)) / self.scale
-        elif self.attn_variant == "general":
+        elif self.attention_var == "general":
             energy = torch.matmul(Q, K.permute(0, 1, 3, 2))
-        elif self.attn_variant == "additive":
+        elif self.attention_var == "additive":
             energy = self.additive_attention(Q, K)
         else:
             raise Exception("Incorrect value for attention variant. Must be one of the following: multiplicative, additive, general")
@@ -71,11 +71,11 @@ class PositionwiseFeedforwardLayer(nn.Module):
         return x
 
 class EncoderLayer(nn.Module):
-    def __init__(self, hid_dim, n_heads, pf_dim, dropout, attn_variant, device):
+    def __init__(self, hid_dim, n_heads, pf_dim, dropout, attention_var, device):
         super().__init__()
         self.self_attn_layer_norm = nn.LayerNorm(hid_dim)
         self.ff_layer_norm = nn.LayerNorm(hid_dim)
-        self.self_attention = MultiHeadAttentionLayer(hid_dim, n_heads, dropout, attn_variant, device)
+        self.self_attention = MultiHeadAttentionLayer(hid_dim, n_heads, dropout, attention_var, device)
         self.feedforward = PositionwiseFeedforwardLayer(hid_dim, pf_dim, dropout)
         self.dropout = nn.Dropout(dropout)
         
@@ -87,13 +87,13 @@ class EncoderLayer(nn.Module):
         return src
 
 class Encoder(nn.Module):
-    def __init__(self, input_dim, hid_dim, n_layers, n_heads, pf_dim, dropout, attn_variant, device, max_length=100):
+    def __init__(self, input_dim, hid_dim, n_layers, n_heads, pf_dim, dropout, attention_var, device, max_length=100):
         super().__init__()
         self.device = device
-        self.attn_variant = attn_variant
+        self.attention_var = attention_var
         self.tok_embedding = nn.Embedding(input_dim, hid_dim)
         self.pos_embedding = nn.Embedding(max_length, hid_dim)
-        self.layers = nn.ModuleList([EncoderLayer(hid_dim, n_heads, pf_dim, dropout, attn_variant, device) for _ in range(n_layers)])
+        self.layers = nn.ModuleList([EncoderLayer(hid_dim, n_heads, pf_dim, dropout, attention_var, device) for _ in range(n_layers)])
         self.dropout = nn.Dropout(dropout)
         self.scale = torch.sqrt(torch.FloatTensor([hid_dim])).to(self.device)
         
@@ -107,13 +107,13 @@ class Encoder(nn.Module):
         return src
 
 class DecoderLayer(nn.Module):
-    def __init__(self, hid_dim, n_heads, pf_dim, dropout, attn_variant, device):
+    def __init__(self, hid_dim, n_heads, pf_dim, dropout, attention_var, device):
         super().__init__()
         self.self_attn_layer_norm = nn.LayerNorm(hid_dim)
         self.enc_attn_layer_norm = nn.LayerNorm(hid_dim)
         self.ff_layer_norm = nn.LayerNorm(hid_dim)
-        self.self_attention = MultiHeadAttentionLayer(hid_dim, n_heads, dropout, attn_variant, device)
-        self.encoder_attention = MultiHeadAttentionLayer(hid_dim, n_heads, dropout, attn_variant, device)
+        self.self_attention = MultiHeadAttentionLayer(hid_dim, n_heads, dropout, attention_var, device)
+        self.encoder_attention = MultiHeadAttentionLayer(hid_dim, n_heads, dropout, attention_var, device)
         self.feedforward = PositionwiseFeedforwardLayer(hid_dim, pf_dim, dropout)
         self.dropout = nn.Dropout(dropout)
         
@@ -127,12 +127,12 @@ class DecoderLayer(nn.Module):
         return trg, attention
 
 class Decoder(nn.Module):
-    def __init__(self, output_dim, hid_dim, n_layers, n_heads, pf_dim, dropout, attn_variant, device, max_length=100):
+    def __init__(self, output_dim, hid_dim, n_layers, n_heads, pf_dim, dropout, attention_var, device, max_length=100):
         super().__init__()
         self.device = device
         self.tok_embedding = nn.Embedding(output_dim, hid_dim)
         self.pos_embedding = nn.Embedding(max_length, hid_dim)
-        self.layers = nn.ModuleList([DecoderLayer(hid_dim, n_heads, pf_dim, dropout, attn_variant, device) for _ in range(n_layers)])
+        self.layers = nn.ModuleList([DecoderLayer(hid_dim, n_heads, pf_dim, dropout, attention_var, device) for _ in range(n_layers)])
         self.fc_out = nn.Linear(hid_dim, output_dim)
         self.dropout = nn.Dropout(dropout)
         self.scale = torch.sqrt(torch.FloatTensor([hid_dim])).to(device)
