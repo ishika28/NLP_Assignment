@@ -25,6 +25,7 @@ From the above analysis and evalution we can see that average time per epoch for
 ![](https://github.com/ishika28/NLP_Assignment/blob/main/A3/Screenshot/additive.png)
 
 <br>
+
 To run the file local for A3
 1. First go to the A3 folder
 2. Run the A3.ipynb file
