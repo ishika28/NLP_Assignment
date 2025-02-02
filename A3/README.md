@@ -6,4 +6,4 @@ To run the file local for A3
 5. Application will be open at 127.0.0.1:8050
 
 ## Demo
-![]()
+![](https://github.com/ishika28/NLP_Assignment/blob/main/A3/demo_A3.gif)
