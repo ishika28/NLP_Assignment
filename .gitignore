@@ -8,3 +8,8 @@ A2/model/
 # Ignore model files inside the A3 directory
 
 A3/model/
+
+# Ignore model files inside the A4 directory
+A4/model/
+
+A4/__pycache__/
