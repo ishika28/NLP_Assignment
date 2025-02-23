@@ -29,4 +29,4 @@ To run the file local for A4
 5. Application will be open at 127.0.0.1:8050
 
 ## Demo
-![]()
+![](https://github.com/ishika28/NLP_Assignment/blob/main/A4/Demo_A4.gif)
