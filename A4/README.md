@@ -2,7 +2,7 @@
 
 | Model Type  | Training Loss with SNLI + MNLI | Cosine Similarity with SNLI + MNLI |Cosine Similarity (Similar sentence) |Cosine Similarity (Dissisimilar sentence) |
 |--------|------------------|--------|--------|--------|
-| Custom Model | 1.13      | 0.56 |  0.56 |  0.61  | 
+| Our Model | 1.13      | 0.56 |  0.56 |  0.61  | 
 
 
 <br>
@@ -11,7 +11,7 @@
 
 | Model Type  | Cosine Similarity (Similar sentence)| Cosine Similarity (Dissisimilar sentence)  |
 |--------|------------------|--------|
-| Custom Model | 0.56      | 0.61  | 
+| Our Model | 0.56      | 0.61  | 
 | Pretrained Model| 0.73     | 0.36  |  
 
 
