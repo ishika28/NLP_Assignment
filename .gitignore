@@ -13,3 +13,9 @@ A3/model/
 A4/model/
 
 A4/__pycache__/
+
+
+# Ignore gpt2 files inside the A5 directory
+A5/gpt2/
+
+A5/cache/
