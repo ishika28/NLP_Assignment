@@ -25,4 +25,4 @@ To run the file local for A5
 5. Application will be open at 127.0.0.1:8050
 
 ## Demo
-![]()
+![](https://github.com/ishika28/NLP_Assignment/blob/main/A5/Demo_A5.gif)
