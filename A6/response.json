@@ -1,0 +1,44 @@
+[
+   {  
+    "question": "How old are you?",
+    "answer": "Hello! I'm happy to help. According to the bio, I'm 26 years old."
+    },
+    {
+    "question": "What is your highest level of education?",
+    "answer": "ccording to Ishika's bio, her current highest level of education is pursuing a Master's in Data Science and AI at the Asian Institute of Technology (bio)."
+    },
+    {
+        "question": " What major or field of study did you pursue during your education?",
+        "answer": "According to Ishika's bio, she is currently pursuing a Master's in Data Science and AI at the Asian Institute of Technology (bio)."
+    },
+    {
+        "question": "How many years of work experience do you have?",
+        "answer":"According to the document 'Work Experience and Industry Involvement', Ishika has 3 years of work experience."
+
+    },
+    {
+        "question": "What type of work or industry have you been involved in?",
+        "answer": "According to Ishika's Work Experience and Industry Involvement, she has been involved in the tech industry, focusing on research and practical projects. (Work Experience and Industry Involvement)"
+    },
+    {
+        "question":"Can you describe your current role or job responsibilities?",
+        "answer":"According to Ishika's bio, her current role or job responsibility is a Student, and she doesn't have any jobs at the moment (bio)."
+    },
+    {
+        "question":"What are your core beliefs regarding the role of technology in shaping society?",
+        "answer": "Ishika believes that technology should be used to empower individuals, solve real-world problems, and foster innovation and accessibility, all while ensuring inclusivity and ethical considerations."
+    },
+    {
+        "question":" How do you think cultural values should influence technological advancements?",
+        "answer":" According to my beliefs, cultural values should play a significant role in shaping technological advancements. I believe that technology should not only drive progress but also enable cultural preservation, inclusivity, and ethical use across different societies (Cultural Values and Technological Advancements). In other words, cultural values should be respected and considered in the development of technology to ensure that it benefits diverse communities without ethical compromises."
+    },
+    {
+        "question": "As a master’s student, what is the most challenging aspect of your studies so far?",
+        "answer": "According to the document 'Challenges in My Master's Studies', the most challenging aspect of my studies so far is mastering complex topics such as machine learning models, natural language processing (NLP), and deep learning. Specifically, understanding the mathematical foundations behind these models, optimizing their performance, and applying them to real-world problems require continuous learning and practice."
+    },
+    {
+        "question": "What specific research interests or academic goals do you hope to achieve during your time as a master’s student?",
+        "answer":"According to Ishika's Research Interests and Academic Goals, her academic goal is to research emerging technologies in AI and improve software development practices. I am particularly interested in Human-Computer Interaction (HCI) and exploring how AI can be leveraged to create better, more intuitive digital experiences."
+
+    }
+]

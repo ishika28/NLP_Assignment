@@ -19,3 +19,11 @@ A4/__pycache__/
 A5/gpt2/
 
 A5/cache/
+
+# Ignore model files inside the A6 directory 
+
+A6/models/
+
+
+# Ignore vector-store files inside the A6 directory
+A6/vector_store/
