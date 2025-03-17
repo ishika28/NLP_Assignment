@@ -36,4 +36,4 @@ The Groq model is a beast at writing, but it’s got a mind of its own. If FAISS
 
 
 ## Demo
-![]()
+![](https://github.com/ishika28/NLP_Assignment/blob/main/A6/demo_video.gif)
