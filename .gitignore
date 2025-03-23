@@ -27,3 +27,11 @@ A6/models/
 
 # Ignore vector-store files inside the A6 directory
 A6/vector_store/
+
+# ignore model files inside the A7 directory
+A7/model/
+
+# ignore gpt2-lora, lora_student_results, student-lora inside the A7 directory
+A7/gpt2-lora/
+A7/lora_student_results/
+A7/student-lora/
