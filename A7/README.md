@@ -5,12 +5,12 @@ I used dataset from hugging face, name [OxAISH-AL-LLM/wiki_toxic](https://huggin
 
 ## Training metrics
 Even Layer Model
-![]()
+![](https://github.com/ishika28/NLP_Assignment/blob/main/A7/image/even.png)
 
 <br>
 
 odd Layer Model
-![]()
+![](https://github.com/ishika28/NLP_Assignment/blob/main/A7/image/odd.png)
 
 <br>
 
@@ -78,4 +78,4 @@ LoRA Model
 
     -  LoRA trained for 2 epochs, longer per epoch than distilled models due to using the full BERT architecture. While parameter efficiency improved
 ## Demo
-![]()
+![](https://github.com/ishika28/NLP_Assignment/blob/main/A7/demo_video.gif)
